@@ -31,29 +31,55 @@ const searchButton = async (id) =>{
     const data = await response.json();
     const courses = data.data;
      displaycatagoryCoure(courses);
-    //console.log(courses)
+    console.log(courses)
 
 }
 
 const displaycatagoryCoure = (courses) =>{
  const cousecContainer = document.getElementById('cousec_container');
+ cousecContainer.textContent ='';
  courses.forEach(element => {
-    console.log(element.thumbnail);
+    console.log(element.
+        authors[0].profile_picture);
 
     const thumnaill_section = document.createElement('div');
     thumnaill_section.classList = `  `;
     thumnaill_section.innerHTML=`
-    <div>
-    <div>
-        <img src="${element.thumbnail}" alt="">
+    
+    <div class="card  bg-base-100 shadow-xl h-[350px]">
+  <figure><img src="${element.thumbnail}" class="h-[200px] w-[300px]" alt="Shoes" /></figure>
+  <div class="card-body">
+    <div class="flex gap-4">
+         <img  src="${element.
+        authors[0].profile_picture}" class="w-[40px] h-[40px] rounded-full" alt="">
+        <h2 class="card-title">${element.title}</h2>
     </div>
-    </div>
+    <p >${element.
+        authors[0].profile_name}</p>
+    <p>${element.
+        others.views
+    } view</p>
+  </div>
+</div>
     `;
     cousecContainer.appendChild(thumnaill_section);
 
+    document.getElementById('sort_button').addEventListener('click',function(){
+        const strview = element.
+        others.views;
+        const strviewfloat = parseFloat(strview);
+        console.log(strviewfloat)
+
+
+    })
+    
+   
  });
 
+
+
 }
+
 
 
 
